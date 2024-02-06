@@ -15,13 +15,15 @@ function MainApp() {
   const [networkCount, setNetworkCount] = useRecoilState(notifications)
   const totalNotificationCount = useRecoilValue(totalNotificationSelector);
 
-  useEffect(() => {
-    // fetch
-    axios.get("https://sum-server.100xdevs.com/notifications")
-      .then(res => {
-        setNetworkCount(res.data)
-      })
-  }, [])
+  // bad way to do async queries with recoil as it first sets to a default value and then updates, we need to somehow make this async call to the atom default value...
+
+  // useEffect(() => {
+  //   // fetch
+  //   axios.get("https://sum-server.100xdevs.com/notifications")
+  //     .then(res => {
+  //       setNetworkCount(res.data)
+  //     })
+  // }, [])
 
   return (
     <>
