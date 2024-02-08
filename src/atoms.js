@@ -10,6 +10,8 @@ export const notifications = atom({
         key: "networkSelector",
         // we can use get to make async calls
         get: async () => {
+            // this will take some time to set the default value, you can check this by adding a manual sleep here
+            await new Promise((resolve) => setTimeout(resolve, 3000));
             const res = await axios.get("https://sum-server.100xdevs.com/notifications");
             return res.data;
         }
